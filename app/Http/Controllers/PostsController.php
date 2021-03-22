@@ -53,7 +53,19 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+
+        if(empty($post))
+        {
+            return redirect()->route('posts.index');
+        }
+
+        $data = array(
+            'page_title'    => $post->title,
+            'post'          => $post
+        );
+
+        return view('posts.show')->with($data);
     }
 
     /**

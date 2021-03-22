@@ -12,6 +12,9 @@ a.post-link{
     margin: 20px 0;
     padding: 10px;
 }
-.post .post-data{
+.post-body{
+    padding-bottom: 15px;
+}
+.post-data{
     font-size: small;
 }
