@@ -7,7 +7,14 @@
 @endsection
 
 @section('content')
-    <h1>Posts</h1>
+    <div class="row">
+        <div class="col-md-8">
+            <h1>Posts</h1>
+        </div>
+        <div class="col-md-4">
+            <a href="{{ route('posts.create') }}" class="btn btn-sm btn-primary">New post</a>
+        </div>
+    </div>
     @if ($posts->count() > 0)
         @foreach ($posts as $post)
             <div class="post">
