@@ -2,3 +2,16 @@
 header a, header nav a{
     text-decoration: none;
 }
+
+/* BLOG POST */
+a.post-link{
+    text-decoration: none;
+}
+.post{
+    border: 1px solid #e6e6e6;
+    margin: 20px 0;
+    padding: 10px;
+}
+.post .post-data{
+    font-size: small;
+}

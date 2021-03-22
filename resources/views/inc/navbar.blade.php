@@ -3,7 +3,7 @@
     <nav class="my-2 my-md-0 me-md-3">
       <a class="p-2 text-dark" href="{{ route('about') }}">About</a>
       <a class="p-2 text-dark" href="{{ route('services')}}">Services</a>
-      <a class="p-2 text-dark" href="{{ route('home') }}">Blog</a>
+      <a class="p-2 text-dark" href="{{ route('posts.index') }}">Blog</a>
       <a class="p-2 text-dark" href="{{ route('contact') }}">Contact</a>
     </nav>
     <a class="btn btn-outline-primary" href="{{ route('home') }}">Sign in</a>
