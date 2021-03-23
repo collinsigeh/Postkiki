@@ -144,8 +144,19 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+
+        if(empty($post))
+        {
+            return redirect()->route('posts.index');
+        }
+
+        $post->delete();
+
+        $request->session()->flash('success', 'Post deleted!');
+
+        return redirect()->route('posts.index');
     }
 }

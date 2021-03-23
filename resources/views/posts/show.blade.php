@@ -12,8 +12,22 @@
             <a href="{{ route('posts.index') }}" class="btn btn-sm btn-outline-secondary">All posts</a>
         </div>
         <div class="col-md-4 collins-right-button">
-            <a href="{{ route('posts.create') }}" class="btn btn-sm btn-primary">New post</a>
-            <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-outline-primary">Edit post</a>
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="{{ route('posts.create') }}" class="btn btn-sm btn-primary">New post</a>
+                </div>
+                <div class="col-md-4">
+                    <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-outline-primary">Edit post</a>
+                </div>
+                <div class="col-md-4">
+                    <form action="{{ route('posts.destroy', $post->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+        
+                        <input type="submit" value="Delete post" class="btn btn-sm btn-outline-danger">
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     <hr />
