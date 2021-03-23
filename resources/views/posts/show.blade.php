@@ -13,6 +13,7 @@
         </div>
         <div class="col-md-4 collins-right-button">
             <a href="{{ route('posts.create') }}" class="btn btn-sm btn-primary">New post</a>
+            <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-outline-primary">Edit post</a>
         </div>
     </div>
     <hr />

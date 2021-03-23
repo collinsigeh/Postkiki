@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class PostsController extends Controller
 {
@@ -90,7 +92,19 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+
+        if(empty($post))
+        {
+            return redirect()->route('posts.index');
+        }
+
+        $data = array(
+            'page_title'    => 'Edit post',
+            'post'          => $post
+        );
+
+        return view('posts.edit')->with($data);
     }
 
     /**
@@ -102,7 +116,26 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+
+        if(empty($post))
+        {
+            return redirect()->route('posts.index');
+        }
+
+        $validated = $request->validate([
+            'title' => ['required', Rule::unique('posts')->ignore($post->id), 'max:255'],
+            'post_body' => ['required'],
+        ]);
+
+        $post->title    = $request->input('title');
+        $post->body     = $request->input('post_body');
+
+        $post->save();
+
+        $request->session()->flash('success', 'Update saved!');
+
+        return redirect()->route('posts.edit', $post->id);
     }
 
     /**
